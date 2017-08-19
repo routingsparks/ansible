@@ -5,3 +5,4 @@ Configure Windows servers to use ansible
 Create playbooks
 
 test-add-github.com
+test-add-cmd-line-vim
