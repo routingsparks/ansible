@@ -7,7 +7,7 @@ Ansible Notes
   3. [Linux Server Configuration](#linuxsvr)
   4. [Windows Server Configuration](#microsoftsvr)
 
-[[⬆]](#toc) <a name='references>References:</a>
+[[⬆]](#toc) <a name='references'>References:</a>
 * [Ansible GitHub](https://github.com/ansible)
 * [Ansible Example Playbooks](https://github.com/ansible/ansible-examples)
 
