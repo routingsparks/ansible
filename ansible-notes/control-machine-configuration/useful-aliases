@@ -1,0 +1,9 @@
+To verify that SSH agent is running.
+  alias agent='eval $(ssh-agent)'
+
+Quickly view Ansible host file. The path for this will change depending on
+how you have your ansible configured on your control machine.
+  alias hosts='cat /etc/ansible/hosts'
+
+Quickly view System host file.
+  alias syshosts='cat /etc/hosts'

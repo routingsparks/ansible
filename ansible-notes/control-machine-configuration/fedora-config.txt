@@ -1,0 +1,16 @@
+To configure a Fedora host as the Ansible control machines
+
+Install Ansible Packages:
+
+$ sudo dnf upgrade
+$ sudo dnf install ansible
+
+Setup Directory
+
+$ mkdir -p /home/user/ansible
+** Change into newly created directory **
+
+$ sudo cp -R /etc/ansible/ .
+$ sudo chown user:user *
+
+Modify host file in current directory utilizing format in global config.

@@ -20,4 +20,5 @@ Ansible Notes
 * Allowing SSH
 
 [[⬆]](#toc) <a name='microsoftsvr'>Control Machine Configuration:</a>
-* Powershell Script for MS assets.
+* Powershell Script for MS assets
+* Ansible Microsoft Modules
