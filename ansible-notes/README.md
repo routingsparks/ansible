@@ -13,8 +13,9 @@ Ansible Notes
 
 [[⬆]](#toc) <a name='controlmachine'>Control Machine Configuration:</a>
 * Configuring Ansible
-  * Fedora
-  * Ubuntu
+  * [Fedora](https://github.com/routingsparks/ansible/blob/master/ansible-notes/control-machine-configuration/fedora-config.txt)
+  * [Ubuntu](https://github.com/routingsparks/ansible/blob/master/ansible-notes/control-machine-configuration/ubuntu-config.txt)
+  * [Useful Aliases](https://github.com/routingsparks/ansible/blob/master/ansible-notes/control-machine-configuration/useful-aliases.txt)
 
 [[⬆]](#toc) <a name='linuxsvr'>Linux Server Configuration:</a>
 * Allowing SSH
