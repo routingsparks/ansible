@@ -1,0 +1,8 @@
+---
+# The variables file used by the playbooks in the database group.
+
+#mysqlservice: mysqld
+#mysql_port: 3306
+#dbuser: sparky
+#dbname: sparkydb
+#upassword: password

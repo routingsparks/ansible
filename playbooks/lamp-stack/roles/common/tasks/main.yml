@@ -1,2 +1,15 @@
 ---
 # tasks file for common
+
+- name: Install EPEL repository
+  yum: name=epel-release state=present
+
+- name: Install common dependencies
+  yum: name={{ item }} state=installed
+  with_items:
+    - libselinux-python
+    - libsemanage-python
+    - firewalld
+
+- include: selinux.yml
+- include: ntp.yml

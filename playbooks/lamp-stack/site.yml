@@ -1,0 +1,19 @@
+---
+
+- name: Apply the common role to all hosts
+  hosts: web-servers
+  become: yes
+  roles:
+    - common
+
+- name: Deploy and configure Apache to web servers.
+  hosts: web-servers
+  become: yes
+  roles:
+    - apache
+
+#- name: Deploy MariaDB and configure the databases
+#  hosts: database-servers
+#  become: yes
+#  roles:
+#  - database
