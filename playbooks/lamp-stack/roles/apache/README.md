@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role will apply packages and configuration files for the Apache part of the lamp stack.
 
 Requirements
 ------------
