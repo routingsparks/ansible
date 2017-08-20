@@ -1,0 +1,13 @@
+Problem Description: Spacewalk-install Tomcat service timeout error
+  - Issue:
+      Error Message: Tomcat failed to start properly or the installer ran out
+      of tried. Please check /var/log/tomcat*/catlina.out for errors
+
+  - Solution: Download c3p0-0.9.1.2-2.jpp5.noarch.rpm manually. Downgrade installed
+    c3p0 version using "yum downgrade c3p0-0.9.1.2-2.jpp5.noarch.rpm".
+
+  - Reference:
+    [RHEL Bugzilla Bug 1442140](https://bugzilla.redhat.com/show_bug.cgi?id=1442140
+
+  - Links:
+    http://koji.spacewalkproject.org/kojifiles/packages/c3p0/0.9.1.2/2.jpp5/noarch/c3p0-0.9.1.2-2.jpp5.noarch.rpm
