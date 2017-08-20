@@ -1,0 +1,7 @@
+[spacewalk-servers]
+centos-svr-01
+
+#[spacewalk-clients]
+#centos-svr-02
+#centos-svr-03
+#fedora-vm

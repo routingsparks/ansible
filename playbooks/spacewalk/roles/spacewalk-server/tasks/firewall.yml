@@ -1,0 +1,30 @@
+---
+- name: Add HTTP services to firewalld
+  firewalld:
+    service: http
+    permanent: true
+    state: enabled
+
+- name: Add HTTPS services to firewalld
+  firewalld:
+    service: https
+    permanent: true
+    state: enabled
+
+- name: Add SSH to firewalld
+  firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+
+- name: Add Spacewalk client port to firewalld
+  firewalld:
+    port: 5222/tcp
+    permanent: true
+    state: enabled
+
+- name: Add database port to firewalld
+  firewalld:
+    port: 5432/tcp
+    permanent: true
+    state: enabled
