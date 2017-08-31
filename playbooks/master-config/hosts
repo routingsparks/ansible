@@ -18,4 +18,11 @@ centos-svr-03
 #fedora-vm
 #win-vm
 
-#[win-servers:vars]
+#[windows-servers:vars]
+## Change the following two options for site specific settings
+## Store password in Ansible Vault
+#ansible_ssh_user=administrator@localdomain
+#ansible_ssh_pass=SuperSecretPass
+#ansible_ssh_port=5986
+#ansible_connection=winrm
+#ansible_winrm_server_cert_validation=ignore

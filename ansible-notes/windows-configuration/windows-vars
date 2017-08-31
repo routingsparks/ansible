@@ -1,0 +1,16 @@
+The [] will include the group that you are specifying the variables for.
+In the example below the group will be windows-servers
+For the ansible_ssh_user variable, this should be a domain administrator account
+For the ansible_ssh_pass variable, this can be stored securely with Ansible vault
+
+
+[windows-servers]
+win-svr-dc01
+win-svr-dc02
+
+[windows-servers:vars]
+ansible_ssh_user=administrator@localdomain
+ansible_ssh_pass=supersecretpassword
+ansible_ssh_port=5986
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore

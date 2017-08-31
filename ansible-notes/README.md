@@ -24,6 +24,7 @@ Ansible Notes
 [[⬆]](#toc) <a name='microsoftsvr'>Control Machine Configuration:</a>
 * Powershell Script for MS assets
 * Ansible Microsoft Modules
+* [Setting Windows Vars - Host File](https://github.com/routingsparks/ansible/blob/master/ansible-notes/windows-configuration/winows-vars)
 
 [[⬆]](#toc) <a name='spacewalk'>Spacewalk Configuration:</a>
 * [Extra Required Packages](https://github.com/routingsparks/ansible/blob/master/ansible-notes/spacewalk-configuration/dependency-error-libhttp-parser)
