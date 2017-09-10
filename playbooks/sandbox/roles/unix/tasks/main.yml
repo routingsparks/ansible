@@ -1,0 +1,8 @@
+---
+# tasks file for unix
+- name: Check free disk space
+  command: "df -h"
+  changed_when: false
+  register: df_result
+
+- debug: var=df_result.stdout_lines

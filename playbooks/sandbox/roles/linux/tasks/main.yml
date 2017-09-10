@@ -1,0 +1,21 @@
+---
+# tasks file for linux
+- name: Check CentOS free disk space
+  command: df -h /
+  changed_when: false
+  register: df_CentOS
+  when: ansible_distribution == 'CentOS'
+
+- name: Check Ubuntu free disk space
+  command: df -h /run
+  changed_when: false
+  register: df_Ubuntu
+  when: ansible_distribution == 'Ubuntu'
+
+- debug: var=df_{{ ansible_distribution }}.stdout_lines
+
+#- name: Check for required services
+#  systemd:
+#    state: started
+#    name: httpd
+#  changed_when: false

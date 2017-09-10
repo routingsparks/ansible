@@ -1,0 +1,8 @@
+---
+# tasks file for common
+- name: Run df -h
+  shell: df -h /boot
+  register: df
+  changed_when: false
+
+- debug: var=df.stdout_lines
