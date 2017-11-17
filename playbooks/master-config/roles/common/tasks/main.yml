@@ -10,5 +10,5 @@
   - libsemanage-python
   - firewalld
 
-- include: selinux.yml
-- include: ntp.yml
+- include_tasks: selinux.yml
+- include_tasks: ntp.yml

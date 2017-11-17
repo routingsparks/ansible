@@ -1,5 +1,6 @@
 ---
-- name: Check to see if SELinux is running
+
+- name: test to see if selinux is running
   command: getenforce
   register: sestatus
   changed_when: false

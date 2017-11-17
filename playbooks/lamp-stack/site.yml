@@ -1,19 +1,15 @@
 ---
 
-- name: Apply the common role to all hosts
-  hosts: web-servers
-  become: yes
+# This is for the entire site.yml
+
+- hosts: web-servers
+  become: true
   roles:
     - common
+    - web
 
-- name: Deploy and configure Apache to web servers.
-  hosts: web-servers
-  become: yes
+- hosts: database-servers
+  become: true
   roles:
-    - apache
-
-#- name: Deploy MariaDB and configure the databases
-#  hosts: database-servers
-#  become: yes
-#  roles:
-#  - database
+    - common
+    - database
