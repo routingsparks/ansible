@@ -1,0 +1,12 @@
+---
+
+- name: Install MS font dependencies.
+  dnf: pkg="{{ item }}" state=present
+  with_items:
+    - curl
+    - cabextract
+
+- name: Install MS fonts.
+  dnf:
+    name: https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+    state: present

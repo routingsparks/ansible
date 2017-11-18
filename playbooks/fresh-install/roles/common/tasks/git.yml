@@ -1,0 +1,47 @@
+---
+
+- name: Configure git username locally on {{ ansible_hostname }}
+  become_user: sparky
+  git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_username }}"
+
+- name: Configure git email address locally {{ ansible_hostname }}.
+  become_user: sparky
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+
+- name: Clone ansible repoistory
+  become_user: sparky
+  git:
+    repo: git@github.com:routingsparks/ansible.git
+    version: master
+    dest: /home/sparky/Documents/ansible
+    accept_hostkey: yes
+
+- name: Clone dot-config repoistory
+  become_user: sparky
+  git:
+    repo: git@github.com:routingsparks/dot-files.git
+    version: master
+    dest: /home/sparky/Documents/dot-config
+    accept_hostkey: yes
+
+- name: Clone bash-scripts repoistory
+  become_user: sparky
+  git:
+    repo: git@github.com:routingsparks/bash-scripts.git
+    version: master
+    dest: /home/sparky/Documents/linux/bash-scripts
+    accept_hostkey: yes
+
+- name: Clone python-projects repoistory
+  become_user: sparky
+  git:
+    repo: git@github.com:routingsparks/python-projects.git
+    version: master
+    dest: /home/sparky/Documents/programming-projects/python-projects
+    accept_hostkey: yes

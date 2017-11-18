@@ -1,0 +1,36 @@
+---
+
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: Install common dependencies
+  dnf: pkg="{{ item }}" state=present
+  with_items:
+    - libselinux-python
+    - libsemanage-python
+
+- name: Download and install Atom text editor
+  dnf:
+    name: https://github.com/atom/atom/releases/download/v1.22.0/atom.x86_64.rpm
+    state: present
+
+- name: Download Atom text editor rpm
+  get_url:
+    url: https://github.com/atom/atom/releases/download/v1.22.0/atom.x86_64.rpm
+    dest: /home/sparky/Downloads/
+  changed_when: false
+
+- name: Install commonly used packages
+  dnf: pkg="{{ item }}" state=present
+  with_items:
+    - hexchat
+    - sqlite
+    - firefox
+    - thunderbird
+    - redshift
+    - redshift-gtk
+    - "@virtualization"
+    - vim-enhanced
+    - git
