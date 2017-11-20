@@ -2,41 +2,49 @@
 # tasks file for spacewalk-server
 
 - name: Install EPEL repository
-  yum: name=epel-release state=present
-
-- name: Install JPackage repository
-  template: src=jpackage.j2 dest=/etc/yum.repos.d/jpackage-generic.repo
+  yum:
+    name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state=present
 
 - name: Install Spacewalk repository
-  yum: name=http://yum.spacewalkproject.org/2.6/RHEL/7/x86_64/spacewalk-repo-2.6-0.el7.noarch.rpm
+  yum:
+    name: http://yum.spacewalkproject.org/2.7/RHEL/7/x86_64/spacewalk-repo-2.7-2.el7.noarch.rpm
+    state: present
+
+- name: Install Java 7 repository
+  get_url:
+    url: "{{ java_repo }}"
+    dest: /etc/yum.repos.d
+#  include_vars:
+#    file: ../vars/main.yml
 
 - name: Install Spacewalk-Setup-Postgresql
-  yum: name=spacewalk-setup-postgresql state=present
-
-  # 20170820: EPEL does not ship updated package due to package being a standard
-  # package in RHEL 7.4.
-- name: Install http_parser package
-  yum: name=https://kojipkgs.fedoraproject.org/packages/http-parser/2.7.1/3.el7/x86_64/http-parser-2.7.1-3.el7.x86_64.rpm
-
-- name: Remove prior version of c3p0 package
-  yum: name=c3p0 state=absent
-
-- name: Install downgraded c3p0 package
-  yum: name=http://koji.spacewalkproject.org/kojifiles/packages/c3p0/0.9.1.2/2.jpp5/noarch/c3p0-0.9.1.2-2.jpp5.noarch.rpm
+  yum:
+    name=spacewalk-setup-postgresql
+    state=present
 
 - name: Install Spacewalk-Postgresql
-  yum: name=spacewalk-postgresql state=present
+  yum:
+    name=spacewalk-postgresql
+    state=present
 
-- include: firewall.yml
+- include_tasks: firewall.yml
 
 - name: Create /var/tmp/answers directory
-  file: path=/var/tmp/answers state=directory
+  file:
+    path=/var/tmp/answers
+    state=directory
 
 - name: Copy Spacewalk answer file to /var/tmp/answers
-  template: src=answers.j2 dest=/var/tmp/answers owner=root group=root mode=0600
+  template:
+    src=answers.j2
+    dest=/var/tmp/answers/
+    owner=root
+    group=root
+    mode=0600
 
 - name: Install Spacewalk
-  command: spacewalk-setup --answer-file=/var/tmp/answers/
+  command: spacewalk-setup --answer-file=/var/tmp/answers/answers.j2
 
 - name: Delete /var/tmp/answers directory
   file: path=/var/tmp/answers state=absent

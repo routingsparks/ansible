@@ -1,10 +1,10 @@
 [servers]
-centos-svr-01
+#centos-svr-01
 #centos-svr-02
-#centos-svr-03
+centos-svr-03
 
-[web-servers]
-centos-svr-01
+#[web-servers]
+#centos-svr-01
 #centos-svr-02
 
 #[database-servers]

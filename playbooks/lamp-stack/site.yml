@@ -2,14 +2,21 @@
 
 # This is for the entire site.yml
 
-- hosts: web-servers
-  become: true
-  roles:
-    - common
-    - web
-
-- hosts: database-servers
+- hosts: servers
   become: true
   roles:
     - common
     - database
+    - web
+
+#- hosts: web-servers
+#  become: true
+#  roles:
+#    - common
+#    - web
+
+#- hosts: database-servers
+#  become: true
+#  roles:
+#    - common
+#    - database

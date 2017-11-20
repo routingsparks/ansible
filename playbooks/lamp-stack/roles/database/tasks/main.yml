@@ -2,34 +2,23 @@
 # tasks file for database
 
 - name: Install mariadb
-  yum: name={{ items }} state=latest
+  yum: name={{ item }} state=latest
   with_items:
     - mariadb
     - mariadb-server
     - MySQL-python
     - php-mysql
 
-- name: Ensure MariaDB is properly configured
-  template:
-    src: etc_my.cnf.d_network.cnf.j2
-    dest: /etc/my.cnf.d/network.cnf
-
-- name: start and enable mariadb
+- name: Start and enable MariaDB service
   service:
     name: mariadb
-    enabled: yes
     state: started
+    enabled: yes
 
-- name: Create the database
-  mysql_db:
-    name: '{{ dbname }}'
-    encoding: utf8
-    state: present
+#- include_tasks: mysql-secure.yml
 
-- name: Create user and perms.
-  mysql_user:
-    name: '{{ dbuser }}'
-    state: present
-    host: '%'
-    password: '{{ dbpass }}'
-    priv: '*.*:ALL'
+#- include: centos.yml
+#  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version|int >= 6
+#
+#- include: ubuntu.yml
+#  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version|int >= '16.04'
