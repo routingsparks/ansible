@@ -1,0 +1,18 @@
+---
+# tasks file for db-servers
+
+- name: Install mariadb
+  yum: name={{ item }} state=latest
+  with_items:
+    - mariadb
+    - mariadb-server
+    - MySQL-python
+    - php-mysql
+
+- name: Start and enable MariaDB service
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+#- include_tasks: mysql-secure.yml

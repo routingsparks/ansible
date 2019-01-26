@@ -1,0 +1,26 @@
+---
+# tasks file for common
+
+- name: install epel-release repoistory
+  yum:
+    name: epel-release
+    state: present
+
+- name: update all packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: install common dependencies
+  yum:
+    name:
+      - libselinux-python
+      - libsemanage-python
+      - firewalld
+    state: present
+
+    
+- include_tasks: selinux.yml
+- include_tasks: firewalld.yml
+- include_tasks: ntp.yml
+- include_tasks: motd.yml

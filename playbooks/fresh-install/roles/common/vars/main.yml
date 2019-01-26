@@ -1,6 +1,0 @@
----
-# vars file for common
-
-# Variables for git.yml
-git_username: routingsparks
-git_email: routingsparks@gmail.com

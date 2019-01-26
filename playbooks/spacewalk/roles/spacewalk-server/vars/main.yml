@@ -1,4 +1,0 @@
----
-# vars file for spacewalk-server
-
-java_repo: https://copr.fedorainfracloud.org/coprs/g/spacewalkproject/java-packages/repo/epel-7/group_spacewalkproject-java-packages-epel-7.repo

@@ -1,8 +1,0 @@
----
-# vars file for database
-
-mysqlservice: mysqld
-mysql_port: 3306
-dbuser: sparky
-dbname: sparkydb
-upassword: password

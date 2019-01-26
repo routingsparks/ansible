@@ -1,6 +1,0 @@
----
-- hosts: spacewalk-servers
-  become: yes
-  roles:
-    - spacewalk-server
-    

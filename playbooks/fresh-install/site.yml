@@ -1,8 +1,0 @@
----
-
-# This is for the entire site.yml
-
-- hosts: fedora-workstation
-  become: true
-  roles:
-    - common
