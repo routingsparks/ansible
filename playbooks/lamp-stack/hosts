@@ -1,0 +1,10 @@
+# file: production
+
+[web-servers]
+centos-vm-01
+
+[db-servers]
+centos-vm-01
+
+[servers]
+centos-vm-01

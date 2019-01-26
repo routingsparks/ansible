@@ -1,0 +1,5 @@
+---
+# vars file for common
+
+httpd_port: 80
+ntpserver: 192.168.122.5
