@@ -1,0 +1,36 @@
+---
+
+# git.yml configures git and clones github repoistories
+# set git_config settings
+
+- name: set git username
+  git_config:
+    name: user.name
+    scope: global
+    value: '{{ git_username }}'
+
+- name: set git email address
+  git_config:
+    name: user.email
+    scope: global
+    value: '{{ git_email }}'
+
+
+# clone git repoistories
+- name: clone git repoistory
+  git:
+#    repo: ssh://git@github.com/routingsparks/{{ item }}.git
+#    dest: /home/{{ local_user }}/Documents/test/{{ item }}
+    repo: ssh://git@github.com/{{ git_username }}/{{ item }}.git
+    dest: /home/{{ local_user }}/Documents/test/{{ item }}
+    version: master
+    clone: yes
+    key_file: /home/{{ local_user }}/.ssh/id_rsa
+    accept_hostkey: yes
+  with_items:
+    - '{{ git_repo }}'
+#  with_items:
+#    - ansible
+#    - dot-files
+#    - python-projects
+#    - bash-scripts

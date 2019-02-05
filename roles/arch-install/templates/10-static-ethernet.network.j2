@@ -1,0 +1,23 @@
+[Match]
+Name={{network_interface}}
+
+[Network]
+{% for server in dns_servers %}
+DNS={{server}}
+{% endfor %}
+Gateway={{ ipv4_gateway }}
+{% if ipv6_gateway is defined %}
+Gateway={{ ipv6_gateway }}
+{% endif %}
+Domains=archlinux.org.
+
+[Address]
+Address={{ ipv4_address }}{{ ipv4_netmask }}
+{% if ipv4_netmask == "/32" %}
+Peer={{ ipv4_gateway }}{{ ipv4_netmask}}
+{% endif %}
+
+{% if ipv6_address is defined %}
+[Address]
+Address={{ ipv6_address }}{{ ipv6_netmask }}
+{% endif %}

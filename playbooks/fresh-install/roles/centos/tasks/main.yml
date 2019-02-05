@@ -1,5 +1,5 @@
 ---
-# tasks file for common
+# tasks file for centos
 
 - name: install epel-release repoistory
   yum:
@@ -19,7 +19,7 @@
       - firewalld
     state: present
 
-- include_tasks: selinux.yml
-- include_tasks: firewalld.yml
-- include_tasks: ntp.yml
+#- include_tasks: selinux.yml
+#- include_tasks: firewalld.yml
+#- include_tasks: ntp.yml
 #- include_tasks: motd.yml

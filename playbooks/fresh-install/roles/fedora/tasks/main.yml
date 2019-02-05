@@ -1,0 +1,12 @@
+---
+# tasks file for fedora
+
+- name: upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: install the rpmfusion repo packages
+  dnf:
+    name: '{{ rpmfusion_free }}'
+    state: present

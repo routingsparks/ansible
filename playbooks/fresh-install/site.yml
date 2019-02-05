@@ -1,0 +1,46 @@
+---
+
+- name: run common role
+  hosts: all
+  roles:
+    - common
+  become: true
+  become_user: sparky
+#  vars_files:
+#    - "group_vars/all.yml"
+
+- name: run distribution specific role [arch]
+  become: true
+  hosts: all
+  roles:
+    - role: arch
+      when: ansible_facts['distribution'] == "Archlinux"
+
+- name: run distribution specific role [fedora]
+  become: true
+  hosts: all
+  roles:
+    - role: fedora
+      when: ansible_facts['distribution'] == "Fedora"
+
+- name: run distribution specific role [ubuntu]
+  become: true
+  hosts: all
+  roles:
+    - role: ubuntu
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+- name: run distribution specific role [debian]
+  become: true
+  hosts: all
+  roles:
+    - role: debian
+      when: ansible_facts['distribution'] == "Debian"
+
+- name: run distribution specific role [centos/rhel]
+  become: true
+  hosts: all
+  roles:
+    - role: centos
+      when: ansible_facts['distribution'] == "CentOS"
+#      when: ansible_facts['distribution'] == "RedHat"

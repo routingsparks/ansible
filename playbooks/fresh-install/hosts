@@ -10,4 +10,6 @@
 #centos-vm-01
 
 [local-vm]
-arch-vm
+#arch-vm
+#fedora-ws
+centos-vm-01

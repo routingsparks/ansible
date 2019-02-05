@@ -1,0 +1,9 @@
+---
+# defaults file for common
+dependencies:
+  - role: common
+    vars:
+      git_username: routingsparks
+      git_email: routingsparks@gmail.com
+#      git_repo: [ansible, dot-files, bash-scripts, python-projects]
+      local_user: sparky
