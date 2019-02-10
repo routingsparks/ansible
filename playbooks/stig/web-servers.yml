@@ -1,0 +1,8 @@
+---
+# file: web-servers.yml
+
+- hosts: web-servers
+  become: true
+  roles:
+    - common
+#    - web-servers

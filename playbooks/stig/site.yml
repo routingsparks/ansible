@@ -1,0 +1,18 @@
+---
+
+- name: run common role
+  hosts: all
+  roles:
+    - common
+  become: true
+  become_user: sparky
+#  vars_files:
+#    - "group_vars/all.yml"
+
+- name: run DISA STIG for RHEL 7 / CentOS 7
+  become: true
+  hosts: all
+  roles:
+    - role: centos
+      when: ansible_facts['distribution'] == "CentOS"
+#      when: ansible_facts['distribution'] == "RedHat"
