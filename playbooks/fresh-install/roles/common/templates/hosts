@@ -1,0 +1,35 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+#
+# local hosts
+127.0.0.1	localhost	localhost.localdomain
+127.0.1.1	arch-box	{{ arch_hostname }}.localdomain
+#
+# sublime text black-hole
+127.0.0.1       www.sublimetext.com
+127.0.0.1       license.sublimehq.com
+#
+# internal virtual servers
+192.168.122.5	  arch-vm
+192.168.122.10	centos-vm-01
+192.168.122.15	centos-stig
+192.168.122.20	fedora-ws
+192.168.122.25	ubuntu-mate
+192.168.122.30	security-onion
+192.168.122.35	security-onion-mgmt
+192.168.122.40	gentoo-vm
+#
+# external virtual servers
+# general servers
+192.168.1.105	centos-svr-01
+192.168.1.110	centos-svr-02
+192.168.1.115	ubuntu-svr-01		landscape
+192.168.1.120	fedora-svr-01		cockpit		docker-host
+#
+# pi-hole dns server
+192.168.1.145	pi-hole
+#
+# elk lab servers
+192.168.1.150	elk-master		  elk-master.sparky.net
+192.168.1.155	elk-client-01		elk-client-01.sparky.net
+192.168.1.160	elk-client-02		elk-client-01.sparky.net

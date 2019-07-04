@@ -7,3 +7,4 @@ dependencies:
       git_email: routingsparks@gmail.com
 #      git_repo: [ansible, dot-files, bash-scripts, python-projects]
       local_user: sparky
+      arch_hostname: arch-box
