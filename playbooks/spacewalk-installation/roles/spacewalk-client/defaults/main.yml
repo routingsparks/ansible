@@ -1,0 +1,6 @@
+
+spacewalk_admin_email: root@localhost
+spacewalk_hostname: centos-vm-01.sparky.net
+spacewalk_fqdn: sparky.net
+spacewalk_ip: 192.168.122.5
+spacewalk_activation_key: 1-centos-{{ansible_distribution_major_version}}-base

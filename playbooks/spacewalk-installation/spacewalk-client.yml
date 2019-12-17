@@ -1,0 +1,9 @@
+---
+# playbook to install spacewalk client.
+
+- hosts: spacewalk_client
+  become: true
+  roles:
+    - common
+    - spacewalk-client
+

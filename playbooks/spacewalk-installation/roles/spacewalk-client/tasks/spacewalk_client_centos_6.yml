@@ -1,0 +1,43 @@
+---
+
+- name: install extra packages for enterprise linux (EPEL) (CentOS 6)
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install tmprepo plugin for Yum
+  yum:
+    name: yum-plugin-tmprepo
+    state: present
+
+- name: Create and enable Spacewalk repository
+  yum_repository:
+    name: spacewalk-client
+    description: Copr repo for spacewalk-2.9-client owned by @spacewalkproject
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/spacewalk-2.9-client/epel-6-$basearch/
+    gpgcheck: yes
+    gpgkey: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/spacewalk-2.9-client/pubkey.gpg
+
+- name: Install Spacewalk
+  yum: 
+    name: http://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+    state: present
+
+- name: Install required packages
+  yum: 
+    name: ['rhn-client-tools', 'rhn-check', 'rhn-setup', 'osad', 'rhnsd', 'm2crypto','yum-rhn-plugin']
+    state: present
+
+- name: Install the Spacewalk server's CA certificiate
+  yum:
+    name: http://{{spacewalk_hostname}}/pub/rhn-org-trusted-ssl-cert-1.0-1.noarch.rpm
+
+- name: register with spacewalk server
+  command: rhnreg_ks --serverUrl=http://{{ spacewalk_hostname }}/XMLRPC --activationkey=1-centos-{{ansible_distribution_major_version}}-base
+  ignore_errors: true
+
+- name: Start OSAD client
+  service:
+    name: osad
+    state: started
+    enabled: yes

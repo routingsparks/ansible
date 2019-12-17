@@ -1,0 +1,52 @@
+---
+
+- name: install extra packages for enterprise linux (EPEL) (CentOS 7)
+  yum:
+    name: epel-release
+    state: present
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: Install tmprepo plugin for Yum
+  yum:
+    name: yum-plugin-tmprepo
+    state: present
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: Create and enable Spacewalk repository
+  yum_repository:
+    name: spacewalk-client
+    description: Spacewalk repository
+    baseurl: https://copr.fedorainfracloud.org/coprs/g/spacewalkproject/spacewalk-2.9/
+    metalink: tmprepo=https://copr-be.cloud.fedoraproject.org/results/%40spacewalkproject/spacewalk-2.9-client/epel-7-x86_64/repodata/repomd.xml
+    gpgcheck: no
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: Install Spacewalk
+  yum: 
+    name: http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: Install required packages
+  yum: 
+    name: ['rhn-client-tools', 'rhn-check', 'rhn-setup', 'rhnsd', 'm2crypto','yum-rhn-plugin']
+    state: present
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+
+- name: Install the Spacewalk server's CA certificiate
+  yum:
+    name: http://{{spacewalk_hostname}}/pub/rhn-org-trusted-ssl-cert-1.0-1.noarch.rpm
+
+- name: register with spacewalk server
+  command: rhnreg_ks --serverUrl=http://{{ spacewalk_hostname }}/XMLRPC --activationkey=1-centos-{{ansible_distribution_major_version}}-base
+  ignore_errors: true
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: Start RHNSD Service
+  systemd:
+    name: rhnsd
+    state: started
+    enabled: yes
+    masked: no
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"

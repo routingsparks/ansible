@@ -1,0 +1,9 @@
+---
+
+- hosts: spacewalk_client
+  become: true
+  roles:
+    - common
+
+
+# import_playbook: spacewalk-client.yml

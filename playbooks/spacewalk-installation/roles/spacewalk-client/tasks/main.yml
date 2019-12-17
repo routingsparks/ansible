@@ -1,0 +1,10 @@
+---
+
+- name: Ensure spacewalk hostname in /etc/hosts
+  lineinfile: dest=/etc/hosts regexp=^{{ spacewalk_ip }} line="{{ spacewalk_ip }} {{ spacewalk_hostname }}"
+
+- include: spacewalk_client_centos_6.yml
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+
+- include: spacewalk_client_centos_7.yml
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
