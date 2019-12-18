@@ -4,5 +4,5 @@
   lineinfile: dest=/etc/hosts regexp=^{{ spacewalk_ip }} line="{{ spacewalk_ip }} {{ spacewalk_hostname }}"
 
 
-- include: spacewalk_server_centos_7.yml
+- include: spacewalk_server_channels.yml
   when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"

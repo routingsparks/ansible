@@ -1,0 +1,36 @@
+---
+
+spacewalk_admin_email: root@localhost
+spacewalk_hostname: centos-vm-01.sparky.net
+spacewalk_fqdn: sparky.net
+spacewalk_ip: 192.168.122.5
+spacewalk_activation_key: 1-centos-{{ansible_distribution_major_version}}-base
+
+# SSL Specific Configurations
+spacewalk_ssl_org: Sparky Network
+spacewalk_ssl_org_unit: Sparky Network
+spacewalk_ssl_set_city: Newport News
+spacewalk_ssl_set_state: VA
+spacewalk_ssl_set_country: US
+spacewalk_ssl_password: spacewalk
+spacewalk_ssl_set_email: root@localhost
+spacewalk_ssl_config_sslvhost: Y
+spacewalk_ssl_common_name: sparks
+spacewalk_db_backend: postgresql
+spacewalk_db_name: spaceschema
+spacewalk_db_user: spaceuser
+spacewalk_db_password: spacepw
+spacewalk_db_host: localhost
+spacewalk_db_port: 5432
+spacewalk_enable_tftp: Y
+spacewalk_proxy: 
+spacewalk_proxy_username: 
+spacewalk_proxy_password: 
+
+
+# Path to the environment file
+environment_file: /etc/environment
+# The environment file owner
+environment_file_owner: root
+# The environment file group
+environment_file_group: root

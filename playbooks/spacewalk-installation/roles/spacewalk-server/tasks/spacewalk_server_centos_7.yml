@@ -1,0 +1,72 @@
+---
+
+- name: Update machine to latest packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: Install extra packages for enterprise linux (EPEL) (CentOS 7)
+  yum:
+    name: epel-release
+    state: present
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: Create and enable Spacewalk repository
+  yum_repository:
+    name: spacewalk-server
+    description: Spacewalk repository
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/spacewalk-2.9/epel-7-$basearch/
+#    metalink: tmprepo=https://copr-be.cloud.fedoraproject.org/results/%40spacewalkproject/spacewalk-2.9/epel-7-x86_64/repodata/repomd.xml
+    gpgcheck: yes
+    gpgkey: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/spacewalk-2.9/pubkey.gpg
+
+- name: Create and enable Spacewalk Nighly repository
+  yum_repository:
+    name: spacewalk-server-nightly
+    description: Spacewalk repository
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/nightly/epel-7-$basearch/
+#    metalink: tmprepo=https://copr-be.cloud.fedoraproject.org/results/%40spacewalkproject/spacewalk-2.9/epel-7-x86_64/repodata/repomd.xml
+    gpgcheck: yes
+    gpgkey: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/nightly/pubkey.gpg
+
+
+- name: Create and enable Spacewalk Java repository
+  yum_repository:
+    name: spacewalk-server-java
+    description: Spacewalk repository
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/java-packages/epel-7-$basearch/
+#    metalink: tmprepo=https://copr-be.cloud.fedoraproject.org/results/%40spacewalkproject/spacewalk-2.9/epel-7-x86_64/repodata/repomd.xml
+    gpgcheck: yes
+    gpgkey: https://copr-be.cloud.fedoraproject.org/results/@spacewalkproject/java-packages/pubkey.gpg
+
+
+- name: Install tmprepo plugin for Yum
+  yum:
+    name: yum-plugin-tmprepo
+    state: present
+#  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+
+- name: Install setup for Spacewalk PostgreSQL Server
+  yum:
+    name: spacewalk-setup-postgresql
+    state: present
+
+
+- name: Install Spacewalk PostgreSQL Server
+  yum: 
+    name: spacewalk-postgresql
+    state: present
+
+- name: Copy answers file for spacewalk setup
+  template: 
+    src: answers.j2 
+    dest: /var/tmp/answers
+    owner: root 
+    group: root 
+    mode: 0600
+
+- name: Install spacewalk
+  command: spacewalk-setup --answer-file=/var/tmp/answers
+  args:
+    creates: /var/satellite

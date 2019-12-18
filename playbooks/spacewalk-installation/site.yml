@@ -1,9 +1,15 @@
 ---
 
+#- hosts: spacewalk_server
+#  become: true
+#  roles:
+#    - common
+#    - spacewalk-server
+
 - hosts: spacewalk_client
   become: true
   roles:
     - common
-
+    - spacewalk-client
 
 # import_playbook: spacewalk-client.yml

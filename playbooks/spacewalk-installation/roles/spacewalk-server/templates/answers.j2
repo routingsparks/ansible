@@ -1,0 +1,47 @@
+# {{ ansible_managed }}
+
+# Administrator's email address.  Required.
+# Multiple email addresses can be used, seperated with commas.
+#
+# Example: 
+# admin-email = user@example.com, otheruser@example.com
+
+admin-email = {{ spacewalk_admin_email }}
+ssl-set-cnames = {{ spacewalk_ssl_common_name }}
+rhn-http-proxy = 
+rhn-http-proxy-username = 
+rhn-http-proxy-password = 
+#rhn-http-proxy = {{ spacewalk_proxy }}
+#rhn-http-proxy-username = {{ spacewalk_proxy_username }}
+#rhn-http-proxy-password = {{ spacewalk_proxy_password }}
+ssl-set-org = {{ spacewalk_ssl_org }}
+
+ssl-set-org-unit = {{ spacewalk_ssl_org_unit }}
+
+ssl-set-city = {{ spacewalk_ssl_set_city }}
+ssl-set-state = {{ spacewalk_ssl_set_state }}
+ssl-set-country = {{ spacewalk_ssl_set_country }}
+
+ssl-password = {{ spacewalk_ssl_password }}
+
+
+# Required if the database is an external (not embedded) database.
+#db-backend = {{ spacewalk_db_backend }}
+#db-user = {{ spacewalk_db_user }}
+#db-password = {{ spacewalk_db_password }}
+#db-host = {{ spacewalk_db_host }}
+#db-port = {{ spacewalk_db_port }}
+#db-name = {{ spacewalk_db_name }}
+
+
+ssl-config-sslvhost = {{ spacewalk_ssl_config_sslvhost }}
+
+# 'Common name' for the SSL certificates.  Defaults to the system's
+# hostname, or whatever 'hostname' is set to.
+#
+ssl-set-common-name = {{ spacewalk_ssl_common_name }}
+
+ssl-set-email = {{ spacewalk_ssl_set_email }}
+
+
+enable-tftp = {{ spacewalk_enable_tftp }}

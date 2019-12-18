@@ -1,10 +1,13 @@
 # file: production inventory
 # created:  20191216
-# modified: 20191216
+# modified: 201912167
 
 [local_vm]
 #centos-vm-04.sparky.net
 
+#[spacewalk_server]
+#centos-vm-01.sparky.net
+
 [spacewalk_client]
-#centos-vm-04.sparky.net
-centos-vm-05.sparky.net
+centos-vm-02.sparky.net
+#centos-vm-05.sparky.net
