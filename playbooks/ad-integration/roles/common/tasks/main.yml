@@ -1,0 +1,7 @@
+---
+# tasks file for common
+
+- name: This would be where yum gets checked
+  debug:
+    msg: This would update yum. Currently it is a placeholder
+

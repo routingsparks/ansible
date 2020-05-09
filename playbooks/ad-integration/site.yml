@@ -1,0 +1,12 @@
+---
+
+- name: Run common role  against all member servers
+  hosts: all
+  roles:
+    - common
+
+- name: Run only red hat role against all Red Hat assets
+  hosts: member_servers
+  roles:
+    - common
+    - rhel_ad
