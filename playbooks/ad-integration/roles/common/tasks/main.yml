@@ -1,7 +1,8 @@
 ---
 # tasks file for common
 
-- name: This would be where yum gets checked
-  debug:
-    msg: This would update yum. Currently it is a placeholder
+- name: Calling the task to set patching baseline.
+  import_tasks: asset_update.yml
 
+- name: Calling the task to set the configuration baseline.
+  import_tasks: asset_config.yml

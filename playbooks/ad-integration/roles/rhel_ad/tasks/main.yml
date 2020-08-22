@@ -1,12 +1,5 @@
 ---
 # tasks file for rhel_ad
 
-- name: This is running in RHEL7 role
-  debug:
-    msg:
-      - This is running from the main.yaml in rhel_ad role
-
-- name: Import another task from main.yaml
-  include_tasks: rhel7_config.yml
-  when:
-    - ansible_facts['distribution_major_version'] == "7"
+- name: Calling the task to configure active directory integration
+  import_tasks: asset_config.yml

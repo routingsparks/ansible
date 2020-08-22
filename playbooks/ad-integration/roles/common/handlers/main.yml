@@ -1,2 +1,7 @@
 ---
 # handlers file for common
+
+- name: nm_reload
+  service:
+    name: NetworkManager
+    state: reloaded

@@ -1,6 +1,0 @@
----
-
-- name: This is from the rhel7_config tasks
-  debug:
-    msg:
-      - This is running from the rhel7_config tasks inside the rhel_ad role

@@ -1,12 +1,8 @@
 ---
 
-- name: Run common role  against all member servers
+- name: Run roles to integrate hosts into active directory.
   hosts: all
-  roles:
-    - common
-
-- name: Run only red hat role against all Red Hat assets
-  hosts: member_servers
+  become: true
   roles:
     - common
     - rhel_ad

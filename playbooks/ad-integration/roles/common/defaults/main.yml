@@ -1,2 +1,20 @@
 ---
 # defaults file for common
+
+
+# DNS Variables
+#dns_nameservers: []
+dns_servers: [172.31.64.1, 8.8.8.8]
+dns_domain: "sparky.net"
+dns_search: "sparky.net"
+ns01: 172.31.67.149
+ns02: 172.31.64.1
+dns_sortlist: []
+dns_options: []
+
+# Device Variables
+int_01_name: eth0
+int_01_gw: 192.168.1.1
+int_02_name: eth1
+int_02_gw: 192.168.2.1
+
