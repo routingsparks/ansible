@@ -24,25 +24,19 @@
     mode: 0644
     backup: yes
 
-- name: Join Active Directory domain.
-  shell: |
-    adcli join {{ fqdn }} -U {{ ad_user }}
-    expect "Password for {{ ad_user }}\@{{ fqdn }}:"
-    send "{{ ad_pass }}"
-    args:
-      executable: /usr/bin/expect
+- name: Check to see if system is already joined to domain
+  command: /bin/bash -c "/usr/sbin/realm list"
+  register: realm_list_results
 
-        #- name: Join Active Directory domain
-        #shell: |
-          #realm join --user={{ ad_user}} {{ fqdn }}
-          #expect "Password for {{ ad_user }}:"
-          #send "{{ ad_pass }}"
-          #args:
-            #executable: /usr/bin/expect
+- name: Join Active Directory domain
+  shell: "echo {{ ad_pass }} | realm join --user={{ ad_user }} --computer-ou={{ ad_ou }} --unattended {{ fqdn }}"
+  when: realm_list_results.stdout == ""
+  tags: ad
 
 - name: Execute authconfig to configure Name Service Switch (NSS) and PAM stack.
   shell:
     cmd: authconfig --enablesssd --enablesssdauth --enablelocauthorize --enablemkhomedir --update
+  tags: ad
 
 - name: Deploy sssd.conf template.
   template:
@@ -51,7 +45,7 @@
     owner: root
     group: root
     #mode: 0600
-    mode: 600
+    mode: 0644
     backup: yes
 
 - name: Start and enable sssd service

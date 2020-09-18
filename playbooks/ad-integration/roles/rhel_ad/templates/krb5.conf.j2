@@ -9,23 +9,23 @@ includedir /etc/krb5.conf.d/
  admin_server = FILE:/var/log/kadmind.log
 
 [libdefaults]
- default_realm = {{ fqdn }}
+ default_realm = {{ domain_krb5  }}
  dns_lookup_realm = true
  dns_lookup_kdc = true
  ticket_lifetime = 24h
  renew_lifetime = 7d
  forwardable = true
  rdns = false
- udppreference_limit = 1
+ udp_preference_limit = 1
  pkinit_anchors = FILE:/etc/pki/tls/certs/ca-bundle.crt
  default_ccache_name = KEYRING:persistent:%{uid}
 
 [realms]
-{{ fqdn }} = {
-kdc = kerberos.{{ fqdn }}
-admin_server = ms-svr-2k19.kerberos.{{ fqdn }}
+{{ domain_krb5 }} = {
+kdc = kerberos.{{ domain_krb5 }}
+admin_server = {{ dc01 }}.kerberos.{{ domain_krb5 }}
 }
 
 [domain_realm]
-.{{ fqdn }} = {{ fqdn }}
-{{ fqdn }} = {{ fqdn }}
+.{{ fqdn }} = {{ domain_krb5 }}
+{{ fqdn }} = {{ domain_krb5 }}

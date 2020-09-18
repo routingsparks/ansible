@@ -4,11 +4,11 @@
 
 # DNS Variables
 #dns_nameservers: []
-dns_servers: [172.31.64.1, 8.8.8.8]
+dns_servers: [192.168.122.1, 192.168.122.50]
 dns_domain: "sparky.net"
 dns_search: "sparky.net"
-ns01: 172.31.67.149
-ns02: 172.31.64.1
+ns01: 192.168.122.50
+ns02: 192.168.122.1
 dns_sortlist: []
 dns_options: []
 
